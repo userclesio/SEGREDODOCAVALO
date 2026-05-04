@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Truque do Pau de Cavalo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      max-width: 420px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    /* ── COUNTDOWN BANNER ── */
+    .countdown-bar {
+      background: #c0392b;
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px 14px;
+      width: 100%;
+    }
+    .countdown-bar p {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .countdown-bar .timer {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    /* ── HEADLINE ── */
+    .headline-section {
+      background: #fff;
+      padding: 20px 18px 10px;
+    }
+    .headline-section h1 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #1a1a1a;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+    .headline-section h1 .highlight-red { color: #c0392b; }
+    .headline-section h1 .highlight-yellow { background: #ffe100; padding: 0 2px; }
+
+    .arrows {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+      background: #fff;
+    }
+    .arrows span {
+      font-size: 32px;
+      color: #c0392b;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    /* ── VSL PLAYER ── */
+    .player-wrap {
+      background: #1a1a2e;
+      padding: 0;
+      width: 100%;
+    }
+
+    vturb-smartplayer {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-section {
+      background: #fff;
+      padding: 20px 18px 10px;
+      text-align: center;
+    }
+    .cta-section p {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .btn-cta {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 18px 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 5px 20px rgba(39,174,96,0.45);
+      animation: pulse-btn 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-btn {
+      0%,100% { transform: scale(1); box-shadow: 0 5px 20px rgba(39,174,96,0.45); }
+      50% { transform: scale(1.03); box-shadow: 0 8px 28px rgba(39,174,96,0.65); }
+    }
+    .btn-cta small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+    .guarantee {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      background: #f0faf4;
+      border: 1px solid #a9dfbf;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .guarantee-icon { font-size: 34px; flex-shrink: 0; }
+    .guarantee p {
+      font-size: 12px;
+      color: #1e8449;
+      font-weight: 700;
+      margin: 0;
+      text-align: left;
+    }
+    .guarantee p small { font-weight: 400; color: #555; display: block; margin-top: 2px; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 8px;
+      background: #e8e8e8;
+    }
+
+    /* ── COMMENTS ── */
+    .comments-section {
+      background: #fff;
+      padding: 18px;
+    }
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .comments-header h2 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+    .comments-header h2 span { display: block; font-size: 13px; font-weight: 400; color: #555; }
+    .sort-btn {
+      font-size: 13px;
+      color: #1877f2;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .comment {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #ddd;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .comment-body { flex: 1; }
+    .comment-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1877f2;
+      margin-bottom: 4px;
+    }
+    .comment-text {
+      font-size: 14px;
+      color: #1a1a1a;
+      line-height: 1.55;
+    }
+    .comment-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .comment-actions span {
+      font-size: 12px;
+      color: #555;
+      cursor: pointer;
+    }
+    .comment-actions .time { margin-left: auto; color: #888; }
+
+    /* ── NOTIFICATION TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      width: calc(100% - 32px);
+      max-width: 380px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      z-index: 9999;
+      transition: transform 0.5s cubic-bezier(.34,1.56,.64,1);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid #27ae60;
+    }
+    .toast-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .toast-content { flex: 1; }
+    .toast-content strong {
+      font-size: 13px;
+      color: #1a1a1a;
+      display: block;
+      line-height: 1.3;
+    }
+    .toast-content small {
+      font-size: 11px;
+      color: #888;
+      display: block;
+      margin-top: 2px;
+    }
+    .toast-check {
+      width: 22px;
+      height: 22px;
+      background: #27ae60;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .toast-check svg { width: 12px; height: 12px; fill: #fff; }
+
+    /* ── SECURITY BADGES ── */
+    .badges {
+      background: #fff;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .badge-icon { font-size: 26px; }
+    .badge span {
+      font-size: 10px;
+      color: #555;
+      font-weight: 600;
+      text-align: center;
+      max-width: 60px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 20px 18px;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    footer a { color: #888; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-bar">
+    <p>⚠️ Atenção: Esta oferta única expira em</p>
+    <div class="timer" id="countdown">22:00</div>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline-section">
+    <h1>
+      Dure mais de <span class="highlight-red">40 MINUTOS</span> na
+      <span class="highlight-yellow">CAMA</span> com esta
+      <span class="highlight-red">TÉCNICA SECRETA</span> e faz qualquer mulher
+      <span class="highlight-red">TREMER, GRITAR</span> e
+      <span class="highlight-red">IMPLORAR</span> por mais!
+    </h1>
+  </div>
+
+  <div class="arrows">
+    <span>&#8595;&#8595;</span>
+    <span>&#8595;&#8595;</span>
+  </div>
+
+  <!-- VSL PLAYER -->
+  <div class="player-wrap">
+    <vturb-smartplayer id="vid-69f8ecbfb65dcbe781247374" style="display: block; margin: 0 auto; width: 100%; max-width: 420px;"></vturb-smartplayer>
+    <script type="text/javascript">
+      var s = document.createElement("script");
+      s.src = "https://scripts.converteai.net/f0ada385-6eec-4f29-9366-31cd3b1a8fb6/players/69f8ecbfb65dcbe781247374/v4/player.js";
+      s.async = !0;
+      document.head.appendChild(s);
+    </script>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <div class="comments-header">
+      <h2>1.249<span>comentários</span></h2>
+      <button class="sort-btn">Ordenar por mais recentes</button>
+    </div>
+
+    <!-- Comment 1 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=11" alt="Fernando Matsinhe" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Fernando Matsinhe</div>
+        <div class="comment-text">Isso realmente funciona! No início fiquei na dúvida, mas depois de testar esse truque do pau de cavalo, minha vida na cama mudou totalmente. Minha esposa agora nem acredita kkkkk. Valeu muito a pena!</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 4 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 2 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=33" alt="Palatos Cossa" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Palatos Cossa</div>
+        <div class="comment-text">Assisti o vídeo até ao fim e apliquei hoje mesmo. Meu Deus, que diferença! Estava quase a desistir de procurar solução. Valeu cada cêntimo o investimento, podem comprar sem medo malta!</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 8 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 3 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=52" alt="Alberto Cossa" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Alberto Cossa</div>
+        <div class="comment-text">Obrigado por partilharem esse vídeo. Estava a passar por momentos difíceis no meu casamento por causa da rapidez. Agora aguento mais de 30 minutos tranquilo. Mudou tudo aqui em casa.</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 12 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 4 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=17" alt="Ricardo Mabunda" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Ricardo Mabunda</div>
+        <div class="comment-text">Simplesmente fenomenal. Resultados rápidos e naturais. Sinto-me com a energia de um jovem de 20 anos. Podem confiar bradas, o truque é real!</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 26 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 5 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=60" alt="Samuel Tembe" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Samuel Tembe</div>
+        <div class="comment-text">Eu já tinha tentado de tudo, até comprimidos que faziam mal ao coração. Esse método é a única coisa que funcionou de verdade e sem efeitos secundários. Recomendo 100%.</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 1 hora</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 6 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=45" alt="Hélder Sitoe" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Hélder Sitoe</div>
+        <div class="comment-text">Minha namorada ficou impressionada. Ela disse que nunca tinha sentido nada assim. Comprei ontem e já estou a ver resultados. Isso aqui é poderoso demais!</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 2 horas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment 7 -->
+    <div class="comment">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/88?img=22" alt="Armando Nhangumbe" />
+      </div>
+      <div class="comment-body">
+        <div class="comment-name">Armando Nhangumbe</div>
+        <div class="comment-text">Não acreditava mas resolvi arriscar. Que decisão certa! Já durei 45 minutos essa semana. A minha mulher perguntou o que aconteceu comigo 😂 Muito obrigado!</div>
+        <div class="comment-actions">
+          <span>👍 Gostar</span>
+          <span>💬 Responder</span>
+          <span class="time">há 3 horas</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 — Todos os direitos reservados.</p>
+    <p>Este produto não é um medicamento. Os resultados podem variar.</p>
+    <p><a href="#">Política de Privacidade</a> &nbsp;|&nbsp; <a href="#">Termos de Uso</a> &nbsp;|&nbsp; <a href="#">Contacto</a></p>
+  </footer>
+
+
+  <script>
+    // ── COUNTDOWN TIMER ──
+    (function () {
+      var total = 22 * 60;
+      function tick() {
+        if (total <= 0) { total = 22 * 60; }
+        var m = String(Math.floor(total / 60)).padStart(2, '0');
+        var s = String(total % 60).padStart(2, '0');
+        document.getElementById('countdown').textContent = m + ':' + s;
+        total--;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+  </script>
+
+</body>
+</html>
