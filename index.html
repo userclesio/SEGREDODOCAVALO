@@ -303,6 +303,226 @@
       max-width: 60px;
     }
 
+    /* ── QUIZ OVERLAY ── */
+    #quizOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0f0f1a;
+      z-index: 10000;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .qscreen {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      padding-bottom: 30px;
+    }
+    .qscreen.active { display: flex; }
+
+    .q-topbar {
+      background: #1a1a2e;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .q-progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .q-progress-label span { font-size: 12px; color: #888; font-weight: 600; }
+    .q-progress-label span:last-child { color: #ff4444; font-weight: 700; }
+    .q-progress-track {
+      height: 6px;
+      background: #2a2a4a;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .q-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #c0392b, #ff4444);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+
+    /* Intro */
+    .q-intro-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 40px;
+      text-align: center;
+    }
+    .q-intro-badge {
+      background: #c0392b;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .q-intro-wrap h1 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .q-intro-wrap h1 em { color: #ff4444; font-style: normal; }
+    .q-intro-wrap p {
+      font-size: 14px;
+      color: #999;
+      line-height: 1.65;
+      margin-bottom: 30px;
+    }
+    .q-start-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #c0392b, #922b21);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 18px 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 24px rgba(192,57,43,0.5);
+      animation: pulse-btn 1.8s ease-in-out infinite;
+    }
+    .q-start-btn small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 5px;
+      opacity: 0.85;
+    }
+
+    /* Question body */
+    .q-body { padding: 24px 18px 16px; flex: 1; }
+    .q-num {
+      font-size: 11px;
+      color: #ff4444;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .q-text {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 22px;
+    }
+    .q-options { display: flex; flex-direction: column; gap: 10px; }
+    .q-opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #1a1a2e;
+      border: 2px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      text-align: left;
+      width: 100%;
+    }
+    .q-opt:hover, .q-opt:active {
+      border-color: #c0392b;
+      background: #1f1030;
+    }
+    .opt-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #2a2a4a;
+      color: #888;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .q-opt span { font-size: 14px; color: #ddd; font-weight: 600; line-height: 1.4; }
+
+    /* Result */
+    .q-result-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 40px;
+    }
+    .q-result-icon { font-size: 58px; margin-bottom: 14px; }
+    .q-result-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff4444;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .q-result-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .q-result-desc {
+      font-size: 14px;
+      color: #bbb;
+      text-align: center;
+      line-height: 1.65;
+      margin-bottom: 28px;
+      padding: 16px;
+      background: #1a1a2e;
+      border-radius: 10px;
+      border-left: 4px solid #c0392b;
+      text-align: left;
+    }
+    .q-cta-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ddd;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .q-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 20px 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      box-shadow: 0 6px 24px rgba(39,174,96,0.5);
+      animation: pulse-btn 1.8s ease-in-out infinite;
+      line-height: 1.4;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #1a1a1a;
@@ -316,6 +536,155 @@
   </style>
 </head>
 <body>
+
+  <!-- ══════════════════════════════════════
+       QUIZ OVERLAY — aparece antes da VSL
+       ══════════════════════════════════════ -->
+  <div id="quizOverlay">
+
+    <!-- INTRO -->
+    <div id="qIntro" class="qscreen active">
+      <div class="q-topbar">
+        <div class="q-progress-label">
+          <span>Teste Rápido Gratuito</span>
+          <span>&#x23F1; ~30 segundos</span>
+        </div>
+      </div>
+      <div class="q-intro-wrap">
+        <div class="q-intro-badge">&#x1F512; Apenas para homens</div>
+        <h1>Descubra em <em>30 segundos</em> se você tem ejaculação precoce e quanto tempo realmente precisa durar para satisfazer uma mulher</h1>
+        <p>Responda com sinceridade e veja seu resultado personalizado no final.</p>
+        <button class="q-start-btn" onclick="startQuiz()">
+          INICIAR TESTE AGORA
+          <small>Leva menos de 1 minuto &#x25BA;</small>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div id="q1" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 1 de 6</span><span>17% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:17%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 01</div>
+        <div class="q-text">Quantos minutos você costuma durar em média durante a penetração?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Menos de 2 minutos</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">B</div><span>Entre 2 e 5 minutos</span></button>
+          <button class="q-opt" onclick="answer(3)"><div class="opt-letter">C</div><span>Entre 5 e 10 minutos</span></button>
+          <button class="q-opt" onclick="answer(4)"><div class="opt-letter">D</div><span>Mais de 10 minutos</span></button>
+          <button class="q-opt" onclick="answer(5)"><div class="opt-letter">E</div><span>Mais de 20 minutos</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div id="q2" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 2 de 6</span><span>33% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:33%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 02</div>
+        <div class="q-text">Com que frequência sua parceira chega ao orgasmo durante o sexo?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Quase nunca ou nunca</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">B</div><span>Raramente</span></button>
+          <button class="q-opt" onclick="answer(3)"><div class="opt-letter">C</div><span>Às vezes</span></button>
+          <button class="q-opt" onclick="answer(4)"><div class="opt-letter">D</div><span>Quase sempre</span></button>
+          <button class="q-opt" onclick="answer(5)"><div class="opt-letter">E</div><span>Sempre (ela goza fácil)</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div id="q3" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 3 de 6</span><span>50% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:50%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 03</div>
+        <div class="q-text">Como sua parceira reage quando você termina rápido?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Ela disfarça, mas percebo que fica frustrada</span></button>
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">B</div><span>Ela já reclamou ou fez indiretas</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">C</div><span>Ela fica quieta e o clima esfria</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">D</div><span>Ela diz que "tudo bem" (mas sei que não está)</span></button>
+          <button class="q-opt" onclick="answer(5)"><div class="opt-letter">E</div><span>Ela fica extremamente satisfeita</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div id="q4" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 4 de 6</span><span>67% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:67%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 04</div>
+        <div class="q-text">Você sente ansiedade ou medo de gozar rápido antes ou durante o sexo?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Sim, sempre</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">B</div><span>Quase sempre</span></button>
+          <button class="q-opt" onclick="answer(3)"><div class="opt-letter">C</div><span>Às vezes</span></button>
+          <button class="q-opt" onclick="answer(4)"><div class="opt-letter">D</div><span>Raramente</span></button>
+          <button class="q-opt" onclick="answer(5)"><div class="opt-letter">E</div><span>Não sinto nenhuma ansiedade</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div id="q5" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 5 de 6</span><span>83% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:83%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 05</div>
+        <div class="q-text">Quantas rodadas você consegue fazer em uma noite de sexo?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Só 1 rodada (e já estou cansado)</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">B</div><span>1 rodada completa + tentativa de segunda</span></button>
+          <button class="q-opt" onclick="answer(3)"><div class="opt-letter">C</div><span>Consigo 2 rodadas</span></button>
+          <button class="q-opt" onclick="answer(4)"><div class="opt-letter">D</div><span>Consigo 3 ou mais rodadas</span></button>
+          <button class="q-opt" onclick="answer(5)"><div class="opt-letter">E</div><span>Consigo várias e ainda fico duro por muito tempo</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div id="q6" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Pergunta 6 de 6</span><span>100% concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:100%"></div></div>
+      </div>
+      <div class="q-body">
+        <div class="q-num">Pergunta 06</div>
+        <div class="q-text">O que mais te incomoda no seu desempenho sexual atual?</div>
+        <div class="q-options">
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">A</div><span>Durar muito pouco tempo</span></button>
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">B</div><span>Não conseguir satisfazer minha parceira</span></button>
+          <button class="q-opt" onclick="answer(1)"><div class="opt-letter">C</div><span>Perder a ereção depois de gozar rápido</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">D</div><span>Falta de confiança na cama</span></button>
+          <button class="q-opt" onclick="answer(2)"><div class="opt-letter">E</div><span>Vergonha de transar com novas parceiras</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="qResult" class="qscreen">
+      <div class="q-topbar">
+        <div class="q-progress-label"><span>Seu Resultado</span><span>&#x2705; Concluído</span></div>
+        <div class="q-progress-track"><div class="q-progress-fill" style="width:100%"></div></div>
+      </div>
+      <div class="q-result-wrap" id="resultContent"></div>
+    </div>
+
+  </div><!-- /quizOverlay -->
 
   <!-- COUNTDOWN -->
   <div class="countdown-bar">
@@ -484,6 +853,76 @@
 
 
   <script>
+    // ── QUIZ ──
+    var quizScore = 0;
+    var quizQuestion = 0;
+    var quizScreens = ['q1','q2','q3','q4','q5','q6'];
+
+    document.body.style.overflow = 'hidden';
+
+    function showScreen(id) {
+      document.querySelectorAll('.qscreen').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById('quizOverlay').scrollTop = 0;
+    }
+
+    function startQuiz() {
+      quizScore = 0;
+      quizQuestion = 0;
+      showScreen('q1');
+    }
+
+    function answer(optScore) {
+      quizScore += optScore;
+      quizQuestion++;
+      if (quizQuestion < quizScreens.length) {
+        showScreen(quizScreens[quizQuestion]);
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      var icon, label, title, desc;
+      if (quizScore <= 12) {
+        icon = '&#x1F534;';
+        label = 'PROBLEMA GRAVE';
+        title = 'Você tem ejaculação precoce severa';
+        desc = 'A maioria das mulheres fica frustrada com esse desempenho. Muitas evitam repetir a experiência e perdem o interesse com o tempo. Isso pode estar destruindo sua vida sexual — e você nem percebeu completamente.';
+      } else if (quizScore <= 19) {
+        icon = '&#x1F7E1;';
+        label = 'PROBLEMA MODERADO';
+        title = 'Você dura pouco e isso está prejudicando sua vida sexual';
+        desc = 'Sua parceira provavelmente finge satisfação ou fica insatisfeita. Com o tempo isso cria distância, falta de desejo e problemas sérios no relacionamento. Você ainda pode reverter isso — e rápido.';
+      } else {
+        icon = '&#x1F7E2;';
+        label = 'QUASE BOM — MAS PODE MELHORAR MUITO';
+        title = 'Você está no limite, mas ainda deixa sua parceira insatisfeita';
+        desc = 'Com a técnica certa você pode facilmente passar dos 40 minutos e deixar qualquer mulher completamente viciada em você. Você está a apenas um passo do desempenho que todo homem deseja.';
+      }
+      document.getElementById('resultContent').innerHTML =
+        '<div class="q-result-icon">' + icon + '</div>' +
+        '<div class="q-result-label">' + label + '</div>' +
+        '<div class="q-result-title">' + title + '</div>' +
+        '<div class="q-result-desc">' + desc + '</div>' +
+        '<div class="q-cta-label">Quer saber a <strong style="color:#fff">técnica secreta</strong> que milhares de homens estão usando para durar mais de <strong style="color:#fff">40 minutos</strong> e fazer as mulheres tremerem de prazer?</div>' +
+        '<button class="q-cta-btn" onclick="revealPage()">SIM, QUERO SABER A T&Eacute;CNICA AGORA &#x25BA;</button>';
+      showScreen('qResult');
+    }
+
+    function revealPage() {
+      var overlay = document.getElementById('quizOverlay');
+      overlay.style.transition = 'opacity 0.5s ease';
+      overlay.style.opacity = '0';
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+        window.scrollTo(0, 0);
+      }, 500);
+    }
+
     // ── COUNTDOWN TIMER ──
     (function () {
       var total = 22 * 60;
