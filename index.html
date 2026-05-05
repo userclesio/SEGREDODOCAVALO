@@ -711,12 +711,7 @@
   <!-- VSL PLAYER -->
   <div class="player-wrap">
     <vturb-smartplayer id="vid-69f8ecbfb65dcbe781247374" style="display: block; margin: 0 auto; width: 100%; max-width: 420px;"></vturb-smartplayer>
-    <script type="text/javascript">
-      var s = document.createElement("script");
-      s.src = "https://scripts.converteai.net/f0ada385-6eec-4f29-9366-31cd3b1a8fb6/players/69f8ecbfb65dcbe781247374/v4/player.js";
-      s.async = !0;
-      document.head.appendChild(s);
-    </script>
+    <!-- VSL carregada via revealPage() para não iniciar durante o quiz -->
   </div>
 
   <div class="section-divider"></div>
@@ -920,6 +915,11 @@
         overlay.style.display = 'none';
         document.body.style.overflow = '';
         window.scrollTo(0, 0);
+        // Carrega a VSL só agora, depois do quiz
+        var s = document.createElement('script');
+        s.src = 'https://scripts.converteai.net/f0ada385-6eec-4f29-9366-31cd3b1a8fb6/players/69f8ecbfb65dcbe781247374/v4/player.js';
+        s.async = true;
+        document.head.appendChild(s);
       }, 500);
     }
 
